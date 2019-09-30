@@ -95,10 +95,12 @@ def head_zonefile(rpz_fh,rpz_domain,rpz_master,rpz_slave, rpz_hostmaster='null@i
   rpz_fh.write('        '+rpz_retry+"\n")
   rpz_fh.write('        '+rpz_expire+"\n")
   rpz_fh.write('        '+rpz_minttl+")\n")
-  rpz_fh.write(";ns list\n")
+  rpz_fh.write(";fake ns list\n")
   rpz_fh.write('        NS '+rpz_master.rstrip('.')+".\n")
+  rpz_fh.write(rpz_master.rstrip('.')+'.  IN NS 127.0.2.1'+"\n")
   if rpz_slave != None:
     rpz_fh.write('        NS '+rpz_slave.rstrip('.')+".\n")
+    rpz_fh.write(rpz_slave.rstrip('.')+'. IN NS 127.0.2.2'+".\n")
   rpz_fh.write(";begin RPZ RR definitions\n")
 
   
