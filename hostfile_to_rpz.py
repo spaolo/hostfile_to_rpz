@@ -25,6 +25,7 @@ def shout(level,message,too=''):
 
 
 def main(myself,argv):
+  rpz_zonename='pippo.it'
   inputdir = './tmp/'
   outputfile = '/tmp/block_zone.rpz'
   print_dups = 0
@@ -41,7 +42,7 @@ def main(myself,argv):
   shout(0,myself+' starting')
 
   try:
-    opts, args = getopt.getopt(argv,"hvnd:o:",["idir=","ofile="])
+    opts, args = getopt.getopt(argv,"hvnd:o:z:",["idir=","ofile=","zonename="])
   except getopt.GetoptError:
     print('test.py -n -d <inputdir> -o <outputfile>')
     sys.exit(2)
@@ -56,10 +57,12 @@ def main(myself,argv):
       verbose = 1
     elif opt in ("-d", "--idir"):
       inputdir = arg
+    elif opt in ("-z", "--zonename"):
+      rpz_zonename = arg
     elif opt in ("-o", "--ofile"):
       outputfile = arg
-  print ('Input file is ', inputdir)
-  print ('Output file is ', outputfile)
+  #print ('Input file is ', inputdir)
+  #print ('Output file is ', outputfile)
 
   try:
     rpz_fh=open(outputfile+'.tmp',"w")
@@ -67,8 +70,7 @@ def main(myself,argv):
    shout(0,'cannot open '+outputfile+'.tmp')
    sys.exit(2)
 
-  #head_zonefile(rpz_fh,'pippo.it','ns1.pippo.it',None)
-  head_zonefile(rpz_fh,'pippo.it','ns1.pippo.it.','ns2.pippo.it')
+  head_zonefile(rpz_fh,rpz_zonename,'ns1.'+rpz_zonename,'ns2.'+rpz_zonename)
   write_rpz_content(inputdir,rpz_fh,print_dups)
   rpz_fh.close()
   try:
