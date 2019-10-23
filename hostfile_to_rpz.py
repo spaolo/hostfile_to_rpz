@@ -133,7 +133,7 @@ def write_rpz_content(hosts_dir,rpz_fh,print_dups):
           continue
         host_row=host_row.rstrip().rstrip('\r\n')
         #parse and validate host row
-        row_field=re.search('^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s+([\w\.\s]+)$',host_row)
+        row_field=re.search('^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s+([\w\.\s\d-]+)$',host_row)
         if row_field == None:
             shout(0,'malformed row '+hostfile+':'+format(rcnt),host_row)
             continue
