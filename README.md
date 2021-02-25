@@ -24,5 +24,9 @@ This is not a script, call it whatever you want but not script, alternative sugg
   - program, scheduled job
   - integration, automation, project
 
+## Programming language fellowship campaign
+Stop this meaningless dissing between different programming languages, coding language is a matter of comfort, if you love a different language you are encuraged to translate this code in any language you love.
+
 ## See also
 [https://github.com/f3sty/hosts2rpz]
+
